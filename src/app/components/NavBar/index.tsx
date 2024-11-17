@@ -4,9 +4,12 @@ import { GameIcon } from "../Icons/icons/GameIcon";
 import { MedalIcon } from "../Icons/icons/MetalIcon";
 import { LocationIcon } from "../Icons/icons/LocationIcon";
 import { cn } from "@/app/helpers/cn";
+import Link from "next/link";
 
 type NavBarListProps = React.ComponentProps<"ul">;
 type NavBarListItem = React.ComponentProps<"li">;
+type NavBarListItemLink = React.ComponentProps<"li">;
+type NavBarListItemLinkProps = React.ComponentProps<typeof Link>;
 type NavBarProps = React.ComponentProps<"nav">;
 
 const NavBarList = ({ children, className, ...props }: NavBarListProps) => {
@@ -22,12 +25,31 @@ const NavBarList = ({ children, className, ...props }: NavBarListProps) => {
     </ul>
   );
 };
+const NavBarListItemLink = ({
+  href,
+  children,
+  className,
+  ...props
+}: NavBarListItemLinkProps) => {
+  return (
+    <NavBarListItem className={cn("p-0", className)}>
+      <Link
+        className="flex gap-2 items-center p-2 w-full rounded-lg flex-grow"
+        href={href}
+        {...props}
+      >
+        {" "}
+        {children}{" "}
+      </Link>
+    </NavBarListItem>
+  );
+};
 
 const NavBarListItem = ({ children, className, ...props }: NavBarListItem) => {
   return (
     <li
       className={cn(
-        "my-2 rounded-lg bg-transparent p-2 hover:bg-slate-800 cursor-pointer flex gap-2 items-center",
+        "my-2 rounded-lg bg-transparent p-2 hover:bg-slate-800 cursor-pointer flex gap-2 items-center w-full",
         className
       )}
       {...props}
@@ -47,29 +69,29 @@ export default function Navbar({ className, ...props }: NavBarProps) {
       {...props}
     >
       <NavBarList className="flex-grow">
-        <NavBarListItem>
+        <NavBarListItemLink href="#">
           {" "}
           <HomeIcon className="size-5" />
           Home
-        </NavBarListItem>
-        <NavBarListItem>
+        </NavBarListItemLink>
+        <NavBarListItemLink href="/games">
           {" "}
           <GameIcon className="size-5" /> Games
-        </NavBarListItem>
-        <NavBarListItem>
+        </NavBarListItemLink>
+        <NavBarListItemLink href="/top-10">
           {" "}
           <MedalIcon className="size-5" /> Top 10
-        </NavBarListItem>
-        <NavBarListItem>
+        </NavBarListItemLink>
+        <NavBarListItemLink href="/walkthroughs">
           {" "}
           <LocationIcon className="size-5" /> Walkthroughs
-        </NavBarListItem>
+        </NavBarListItemLink>
       </NavBarList>
       <NavBarList>
-        <NavBarListItem>
+        <NavBarListItemLink href="/user">
           <UserIcon className="size-5" />
-          Home
-        </NavBarListItem>
+          User
+        </NavBarListItemLink>
       </NavBarList>
     </nav>
   );
