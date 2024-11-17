@@ -3,34 +3,43 @@ import { HomeIcon } from "../Icons/icons/HomeIcon";
 import { GameIcon } from "../Icons/icons/GameIcon";
 import { MedalIcon } from "../Icons/icons/MetalIcon";
 import { LocationIcon } from "../Icons/icons/LocationIcon";
-import { ReactNode } from "react";
+import { cn } from "@/app/helpers/cn";
 
-interface NavBarListProps {
-  children: ReactNode;
-  className?: string;
-}
+type NavBarListProps = React.ComponentProps<"ul">;
+type NavBarListItem = React.ComponentProps<"li">;
+type NavBarProps = React.ComponentProps<"nav">;
 
-const NavBarList = ({ children, className }: NavBarListProps) => {
+const NavBarList = ({ children, className, ...props }: NavBarListProps) => {
   return (
     <ul
-      className={`my-4 items-start border-t border-indigo-300/40 hover:border-indigo-300/90 flex flex-col gap-2 ${className}`}
+      className={cn(
+        "my-4 items-start border-t border-indigo-300/40 hover:border-indigo-300/90 flex flex-col gap-2",
+        className
+      )}
+      {...props}
     >
       {children}
     </ul>
   );
 };
 
-const NavBarListItem = ({ children }: { children: ReactNode }) => {
+const NavBarListItem = ({ children, className, ...props }: NavBarListItem) => {
   return (
-    <li className="my-2 rounded-lg bg-transparent p-2 hover:bg-slate-800 cursor-pointer flex gap-2 items-center">
+    <li
+      className={cn(
+        "my-2 rounded-lg bg-transparent p-2 hover:bg-slate-800 cursor-pointer flex gap-2 items-center",
+        className
+      )}
+      {...props}
+    >
       {" "}
       {children}
     </li>
   );
 };
-export default function Navbar() {
+export default function Navbar({ className, ...props }: NavBarProps) {
   return (
-    <nav className="flex flex-col bg-slate-900 border-r border-indigo-300/40 hover:border-indigo-300/90 text-white w-72 p-2 h-screen">
+    <nav className="flex flex-col bg-slate-900 border-r border-indigo-300/40 hover:border-indigo-300/90 text-white w-64 p-2 h-screen">
       <NavBarList className="flex-grow">
         <NavBarListItem>
           {" "}
