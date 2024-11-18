@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex gap-2`}
+        className={`${geistSans.variable} ${geistMono.variable} flex gap-2 bg-white text-slate-300`}
       >
         <Navbar />
         {children}
