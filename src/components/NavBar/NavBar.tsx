@@ -3,7 +3,7 @@ import { HomeIcon } from "../Icons/icons/HomeIcon";
 import { GameIcon } from "../Icons/icons/GameIcon";
 import { MedalIcon } from "../Icons/icons/MetalIcon";
 import { LocationIcon } from "../Icons/icons/LocationIcon";
-import { cn } from "@/app/helpers/cn";
+import { cn } from "@/helpers/cn";
 import { NavBarList } from "./NavBarList";
 import { NavBarListItemLink } from "./NavBarListItemLink";
 import { NavBarProps } from "./types";
@@ -12,7 +12,7 @@ export default function Navbar({ className, ...props }: NavBarProps) {
   return (
     <nav
       className={cn(
-        "flex flex-col bg-slate-900 border-r border-indigo-300/40 hover:border-indigo-300/90 text-slate-300 w-64 p-2 h-screen",
+        "fixed top-0 left-0 flex flex-col bg-slate-900 border-r border-indigo-300/40 hover:border-indigo-300/90 text-slate-300 w-64 p-2 h-screen",
         className
       )}
       {...props}
@@ -37,8 +37,11 @@ export default function Navbar({ className, ...props }: NavBarProps) {
         </NavBarListItemLink>
       </NavBarList>
       <NavBarList>
-        <NavBarListItemLink href="/user">
-          <UserIcon className="size-5" />
+        <NavBarListItemLink
+          className="border-t border-indigo-300/40 hover:border-indigo-300/90 w-full"
+          href="/user"
+        >
+          <UserIcon className="size-5 " />
           User
         </NavBarListItemLink>
       </NavBarList>
