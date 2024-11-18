@@ -1,4 +1,4 @@
-import { cn } from "@/app/helpers/cn";
+import { cn } from "@/helpers/cn";
 import { NavBarListProps } from "./types";
 
 export const NavBarList = ({

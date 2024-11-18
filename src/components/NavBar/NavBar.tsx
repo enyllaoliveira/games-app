@@ -3,7 +3,7 @@ import { HomeIcon } from "../Icons/icons/HomeIcon";
 import { GameIcon } from "../Icons/icons/GameIcon";
 import { MedalIcon } from "../Icons/icons/MetalIcon";
 import { LocationIcon } from "../Icons/icons/LocationIcon";
-import { cn } from "@/app/helpers/cn";
+import { cn } from "@/helpers/cn";
 import { NavBarList } from "./NavBarList";
 import { NavBarListItemLink } from "./NavBarListItemLink";
 import { NavBarProps } from "./types";
