@@ -4,61 +4,10 @@ import { GameIcon } from "../Icons/icons/GameIcon";
 import { MedalIcon } from "../Icons/icons/MetalIcon";
 import { LocationIcon } from "../Icons/icons/LocationIcon";
 import { cn } from "@/app/helpers/cn";
-import Link from "next/link";
+import { NavBarList } from "./NavBarList";
+import { NavBarListItemLink } from "./NavBarListItemLink";
+import { NavBarProps } from "./types";
 
-type NavBarListProps = React.ComponentProps<"ul">;
-type NavBarListItem = React.ComponentProps<"li">;
-type NavBarListItemLink = React.ComponentProps<"li">;
-type NavBarListItemLinkProps = React.ComponentProps<typeof Link>;
-type NavBarProps = React.ComponentProps<"nav">;
-
-const NavBarList = ({ children, className, ...props }: NavBarListProps) => {
-  return (
-    <ul
-      className={cn(
-        "my-4 items-start border-t border-indigo-300/40 hover:border-indigo-300/90 flex flex-col gap-2",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </ul>
-  );
-};
-const NavBarListItemLink = ({
-  href,
-  children,
-  className,
-  ...props
-}: NavBarListItemLinkProps) => {
-  return (
-    <NavBarListItem className={cn("p-0", className)}>
-      <Link
-        className="flex gap-2 items-center p-2 w-full rounded-lg flex-grow"
-        href={href}
-        {...props}
-      >
-        {" "}
-        {children}{" "}
-      </Link>
-    </NavBarListItem>
-  );
-};
-
-const NavBarListItem = ({ children, className, ...props }: NavBarListItem) => {
-  return (
-    <li
-      className={cn(
-        "my-2 rounded-lg bg-transparent p-2 hover:bg-slate-800 cursor-pointer flex gap-2 items-center w-full",
-        className
-      )}
-      {...props}
-    >
-      {" "}
-      {children}
-    </li>
-  );
-};
 export default function Navbar({ className, ...props }: NavBarProps) {
   return (
     <nav
