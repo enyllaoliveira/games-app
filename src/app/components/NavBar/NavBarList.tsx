@@ -8,10 +8,7 @@ export const NavBarList = ({
 }: NavBarListProps) => {
   return (
     <ul
-      className={cn(
-        "my-4 items-start border-t border-indigo-300/40 hover:border-indigo-300/90 flex flex-col gap-2",
-        className
-      )}
+      className={cn("my-4 items-startflex flex-col gap-2", className)}
       {...props}
     >
       {children}
