@@ -12,7 +12,7 @@ export default function Navbar({ className, ...props }: NavBarProps) {
   return (
     <nav
       className={cn(
-        "flex flex-col bg-slate-900 border-r border-indigo-300/40 hover:border-indigo-300/90 text-white w-64 p-2 h-screen",
+        "flex flex-col bg-slate-900 border-r border-indigo-300/40 hover:border-indigo-300/90 text-slate-300 w-64 p-2 h-screen",
         className
       )}
       {...props}
