@@ -30,7 +30,6 @@ async function sendArticle() {
         publishedAt: new Date(article.publish_date),
       },
     });
-    console.log("*** created article", record.id, record.title);
   }
 }
 

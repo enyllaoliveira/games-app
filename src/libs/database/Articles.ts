@@ -16,8 +16,6 @@ const Article = {
       take,
       skip,
     });
-    console.log(" *** ~ DB articles:", records);
-
     return records;
   },
 
@@ -25,8 +23,6 @@ const Article = {
     const count = await prisma.article.count({
       where,
     });
-    console.log(" *** ~ DB articles:", count);
-
     return count;
   },
 };
