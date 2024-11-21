@@ -1,7 +1,13 @@
-import articles from "@/data/articles.json";
+import Article from "@/libs/database/Articles";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const articles = await Article.get({
+    orderBy: { publishedAt: "desc" },
+    limit: 14,
+  });
+  const highlightArticles = articles.slice(0, 4);
+  const listArticles = articles.slice(4);
   return (
     <div className="ml-64">
       <div className="w-full h-[35vh] bg-red-300 flex-center">
@@ -9,7 +15,7 @@ export default function Home() {
       </div>
       <div className="container mx-auto my-6 bg-slate-800">
         <div className="grid grid-cols-4 gap-4 h-[35vh]">
-          {articles.splice(-4).map((article) => (
+          {highlightArticles.map((article) => (
             <div
               key={article.title}
               className="flex-center relative overflow-hidden"
@@ -35,7 +41,7 @@ export default function Home() {
             <div className="col-span-8 flex flex-col gap-4">
               <div className="flex gap-4 bg-slate-800 rounded-md">
                 <div className="flex flex-col gap-2 py-4 bg-slate-800">
-                  {articles.map((article) => (
+                  {listArticles.map((article) => (
                     <section
                       key={article.title}
                       className="flex gap-2 bg-slate-800 rounded-md py-4"
@@ -53,6 +59,8 @@ export default function Home() {
                       </div>
                       <div className="w-full flex flex-col gap-2 pl-4">
                         <p className="text-2xl mb-4">{article.title}</p>
+                        <p>{article.publishedAt.toISOString()}</p>
+
                         <p>{article.excerpt}</p>
                         <button className="bg-slate-700 hover:bg-slate-900 rounded-lg px-4 py-2 inline max-w-max">
                           {" "}
