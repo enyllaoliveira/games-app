@@ -1,13 +1,16 @@
-import Article from "@/libs/database/Articles";
+import ArticleService from "@/services/Articles";
 import Image from "next/image";
 
 export default async function Home() {
-  const articles = await Article.get({
-    orderBy: { publishedAt: "desc" },
-    limit: 14,
-  });
-  const highlightArticles = articles.slice(0, 4);
-  const listArticles = articles.slice(4);
+  const articles = await ArticleService.getHomeArticles();
+  const latestArticles = await ArticleService.getHomeLatestArticles();
+
+  // const articles = await Article.get({
+  //   orderBy: { publishedAt: "desc" },
+  //   limit: 14,
+  // });
+  // const highlightArticles = articles.slice(0, 4);
+  // const listArticles = articles.slice(4);
   return (
     <div className="ml-64">
       <div className="w-full h-[35vh] bg-red-300 flex-center">
@@ -15,7 +18,7 @@ export default async function Home() {
       </div>
       <div className="container mx-auto my-6 bg-slate-800">
         <div className="grid grid-cols-4 gap-4 h-[35vh]">
-          {highlightArticles.map((article) => (
+          {latestArticles.data.map((article) => (
             <div
               key={article.title}
               className="flex-center relative overflow-hidden"
@@ -41,7 +44,7 @@ export default async function Home() {
             <div className="col-span-8 flex flex-col gap-4">
               <div className="flex gap-4 bg-slate-800 rounded-md">
                 <div className="flex flex-col gap-2 py-4 bg-slate-800">
-                  {listArticles.map((article) => (
+                  {articles.data.map((article) => (
                     <section
                       key={article.title}
                       className="flex gap-2 bg-slate-800 rounded-md py-4"
@@ -51,7 +54,7 @@ export default async function Home() {
                           <Image
                             src={`/assets/images/articles/${article.image}`}
                             alt={article.excerpt}
-                            className="w-full h-full object-cover transition duration-500 hover:scale-105 rounded-r-lg"
+                            className="w-full h-full object-cover transition duration-500 hover:scale-105 "
                             width={600}
                             height={400}
                           />
@@ -63,14 +66,14 @@ export default async function Home() {
 
                         <p>{article.excerpt}</p>
                         <button className="bg-slate-700 hover:bg-slate-900 rounded-lg px-4 py-2 inline max-w-max">
-                          {" "}
                           See more
                         </button>
                       </div>
                     </section>
                   ))}
+                  <div>Pagination</div>
                 </div>
-              </div>{" "}
+              </div>
             </div>
             <div className="col-span-4 bg-red-600">B</div>
           </div>

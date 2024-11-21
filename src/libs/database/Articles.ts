@@ -20,6 +20,15 @@ const Article = {
 
     return records;
   },
+
+  count: async ({ where = {} }) => {
+    const count = await prisma.article.count({
+      where,
+    });
+    console.log(" *** ~ DB articles:", count);
+
+    return count;
+  },
 };
 
 export default Article;
