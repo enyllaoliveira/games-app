@@ -1,3 +1,4 @@
+import { PageWrapper } from "@/components/PageWrapper";
 import { Pagination } from "@/components/Pagination/Pagination";
 import ArticleService from "@/services/Articles";
 import Image from "next/image";
@@ -20,7 +21,7 @@ export default async function Home({
   // const highlightArticles = articles.slice(0, 4);
   // const listArticles = articles.slice(4);
   return (
-    <div className="ml-64">
+    <PageWrapper>
       <div className="w-full h-[35vh] bg-red-300 flex-center">
         <p> oi</p>
       </div>
@@ -94,6 +95,6 @@ export default async function Home({
           </div>
         </div>
       </div>
-    </div>
+    </PageWrapper>
   );
 }
