@@ -18,7 +18,7 @@ export default function Navbar({ className, ...props }: NavBarProps) {
       {...props}
     >
       <NavBarList className="flex-grow">
-        <NavBarListItemLink href="#">
+        <NavBarListItemLink href="/">
           {" "}
           <HomeIcon className="size-5" />
           Home
