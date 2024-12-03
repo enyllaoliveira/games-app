@@ -1,5 +1,8 @@
+import { Hero } from "@/components/Hero/hero";
+import { PageWrapper } from "@/components/PageWrapper";
 import { Pagination } from "@/components/Pagination/Pagination";
 import ArticleService from "@/services/Articles";
+import GamesService from "@/services/Games";
 import Image from "next/image";
 
 export default async function Home({
@@ -13,19 +16,15 @@ export default async function Home({
   const articles = await ArticleService.getHomeArticles(currentePage, limit);
   const latestArticles = await ArticleService.getHomeLatestArticles();
 
-  // const articles = await Article.get({
-  //   orderBy: { publishedAt: "desc" },
-  //   limit: 14,
-  // });
-  // const highlightArticles = articles.slice(0, 4);
-  // const listArticles = articles.slice(4);
+  const heroGames = await GamesService.getRandomGames(40);
+
   return (
-    <div className="ml-64">
-      <div className="w-full h-[35vh] bg-red-300 flex-center">
-        <p> oi</p>
+    <PageWrapper>
+      <div className="container my-6 h-[35vh] bg-red-300 flex-center overflow-hidden">
+        <Hero games={heroGames.data} />
       </div>
       <div className="container mx-auto my-6 bg-slate-800">
-        <div className="grid grid-cols-4 gap-4 h-[35vh]">
+        <div className="grid grid-cols-4 gap-4 ">
           {latestArticles.data.map((article) => (
             <div
               key={article.title}
@@ -94,6 +93,6 @@ export default async function Home({
           </div>
         </div>
       </div>
-    </div>
+    </PageWrapper>
   );
 }
