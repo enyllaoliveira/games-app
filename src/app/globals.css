@@ -12,18 +12,18 @@
 @tailwind utilities;
 
 @layer base {
-  --duration: 20s; /* Tempo para a rolagem completa */
-  --item-size: 100px; /* Tamanho do item */
+  --duration: 20s;
+  --item-size: 100px;
 
   .scroll-ttb {
     overflow: hidden;
-    height: calc(var(--item-size) * 3); /* Mostra 3 itens */
+    height: calc(var(--item-size) * 3);
     animation: scroll-ttb var(--duration) linear infinite;
   }
 
   .scroll-btt {
     overflow: hidden;
-    height: calc(var(--item-size) * 3); /* Mostra 3 itens */
+    height: calc(var(--item-size) * 3);
     animation: scroll-btt var(--duration) linear infinite;
   }
 
@@ -32,9 +32,7 @@
       transform: translateY(0);
     }
     100% {
-      transform: translateY(
-        calc(-1 * var(--item-size) * 10)
-      ); /* Rola 10 itens */
+      transform: translateY(calc(-1 * var(--item-size) * 10));
     }
   }
 
