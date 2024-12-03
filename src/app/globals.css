@@ -7,3 +7,43 @@
     @apply flex justify-center items-center;
   }
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  --duration: 20s; /* Tempo para a rolagem completa */
+  --item-size: 100px; /* Tamanho do item */
+
+  .scroll-ttb {
+    overflow: hidden;
+    height: calc(var(--item-size) * 3); /* Mostra 3 itens */
+    animation: scroll-ttb var(--duration) linear infinite;
+  }
+
+  .scroll-btt {
+    overflow: hidden;
+    height: calc(var(--item-size) * 3); /* Mostra 3 itens */
+    animation: scroll-btt var(--duration) linear infinite;
+  }
+
+  @keyframes scroll-ttb {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(
+        calc(-1 * var(--item-size) * 10)
+      ); /* Rola 10 itens */
+    }
+  }
+
+  @keyframes scroll-btt {
+    0% {
+      transform: translateY(calc(-1 * var(--item-size) * 10));
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
