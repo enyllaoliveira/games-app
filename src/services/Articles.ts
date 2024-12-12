@@ -58,6 +58,10 @@ const ArticleService = {
       },
     };
   },
+
+  getArticleBySlug: async (slug: string) => {
+    Article;
+  },
 };
 
 export default ArticleService;

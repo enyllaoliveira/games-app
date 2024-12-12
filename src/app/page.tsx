@@ -4,6 +4,7 @@ import { Pagination } from "@/components/Pagination/Pagination";
 import ArticleService from "@/services/Articles";
 import GamesService from "@/services/Games";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home({
   searchParams,
@@ -72,9 +73,12 @@ export default async function Home({
                         <p>{article.publishedAt.toISOString()}</p>
 
                         <p>{article.excerpt}</p>
-                        <button className="bg-slate-700 hover:bg-slate-900 rounded-lg px-4 py-2 inline max-w-max">
+                        <Link
+                          href={`/articles/${article.slug}`}
+                          className="bg-slate-700 hover:bg-slate-900 rounded-lg px-4 py-2 inline max-w-max"
+                        >
                           See more
-                        </button>
+                        </Link>
                       </div>
                     </section>
                   ))}
