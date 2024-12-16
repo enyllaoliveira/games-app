@@ -59,6 +59,8 @@ const ArticleService = {
     };
   },
 
+  // parou aqui
+
   getArticleBySlug: async (slug: string) => {
     Article;
   },
