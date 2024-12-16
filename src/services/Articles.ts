@@ -65,4 +65,6 @@ const ArticleService = {
   },
 };
 
+// entender a lógica
+
 export default ArticleService;
