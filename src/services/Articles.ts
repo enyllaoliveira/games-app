@@ -59,12 +59,9 @@ const ArticleService = {
     };
   },
 
-  // parou aqui
   getArticleBySlug: async (slug: string) => {
     Article;
   },
 };
-
-// entender a lógica
 
 export default ArticleService;
